@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>漫夜长歌 | 专注于Java后端、大数据</title>
+  
+  <subtitle>漫夜长歌的技术博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.mychangee.com/"/>
+  <updated>2020-03-07T17:18:45.337Z</updated>
+  <id>https://www.mychangee.com/</id>
+  
+  <author>
+    <name>漫夜长歌</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo静态博客安装详解</title>
+    <link href="https://www.mychangee.com/2020/03/08/article_00011/"/>
+    <id>https://www.mychangee.com/2020/03/08/article_00011/</id>
+    <published>2020-03-07T17:08:06.000Z</published>
+    <updated>2020-03-07T17:18:45.337Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hexo静态博客框架是一个非常易用易配置的博客框架，是搭建博客的不错的选择，本文详细介绍了Hexo博客的搭建步骤，并对博客的操作和配置做了简单的介绍，博客配置的详细内容以后会再开帖详述。</p><a id="more"></a><h1 id="hexo静态博客安装详解"><a href="#hexo静态博客安装详解" class="headerlink" title="hexo静态博客安装详解"></a>hexo静态博客安装详解</h1><blockquote><p>参考文档：</p><ul><li><a href="https://www.bilibili.com/video/av44544186" target="_blank" rel="noopener">CodeSheep-Hexo博客搭建</a></li><li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方文档</a></li><li><a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">菜鸟教程 - Node.js 安装配置</a></li><li><a href="https://developer.aliyun.com/mirror/NPM?from=tnpm" target="_blank" rel="noopener">淘宝NPM镜像 - 使用说明</a></li><li><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Hexo-butterfly主题文档</a></li></ul><p>安装可能会碰到各种问题，一般只要按照步骤，不会有太大问题。但是以防万一，第一、及时拍快照备份，第二、博客目录如果出现问题可以删除重新开始。</p></blockquote><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><ol><li>下载并解压nodejs<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# wget https:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F;v10.9.0&#x2F;node-v10.9.0-linux-x64.tar.xz</span><br><span class="line">[root@Friday ~]# mkdir -p &#x2F;usr&#x2F;software&#x2F;nodejs&#x2F;&#x2F;将软件放在此目录下</span><br><span class="line">[root@Friday ~]#  tar -xvf node-v10.9.0-linux-x64.tar.xz -C &#x2F;usr&#x2F;software&#x2F;nodejs --strip-components 1</span><br></pre></td></tr></table></figure></li><li>创建软链接（快捷方式）<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# ln -s &#x2F;usr&#x2F;software&#x2F;nodejs&#x2F;bin&#x2F;npm   &#x2F;usr&#x2F;local&#x2F;bin&#x2F; </span><br><span class="line">[root@Friday ~]# ln -s &#x2F;usr&#x2F;software&#x2F;nodejs&#x2F;bin&#x2F;node   &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li><li>验证<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@friday ~]# node -v&#x2F;&#x2F;输出版本号，说明配置成功</span><br><span class="line">v10.9.0</span><br><span class="line">[root@friday ~]# npm -v&#x2F;&#x2F;输出版本号，说明配置成功</span><br><span class="line">6.2.0</span><br></pre></td></tr></table></figure></li></ol><h3 id="安装cnpm代替nodejs中的npm"><a href="#安装cnpm代替nodejs中的npm" class="headerlink" title="安装cnpm代替nodejs中的npm"></a>安装cnpm代替nodejs中的npm</h3><ol><li>安装cnpm<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li><li>为cnpm创建软链接<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# ln -s &#x2F;usr&#x2F;software&#x2F;nodejs&#x2F;bin&#x2F;cnpm   &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li><li>验证<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@friday ~]# npm -v&#x2F;&#x2F;输出版本号，说明配置成功</span><br><span class="line">6.2.0</span><br></pre></td></tr></table></figure></li></ol><h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><ol><li>安装git<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# yum install git-core -y</span><br></pre></td></tr></table></figure></li><li>验证<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@10 ~]# git --version&#x2F;&#x2F;输出版本号，说明配置成功</span><br><span class="line">git version 1.8.3.1</span><br></pre></td></tr></table></figure></li></ol><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ol><li>安装hexo<blockquote><p>如果报[fsevents@~2.1.2] optional install error: Package require os(darwin) not compatible with your platform(linux)警告，不必理会意思是，可选的安装错误，包要求macos但是你的是linux不兼容；</p></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure></li><li>为hexo创建软链接<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# ln -s &#x2F;usr&#x2F;software&#x2F;nodejs&#x2F;bin&#x2F;hexo   &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li><li>验证<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@friday ~]# hexo -v</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Linux 3.10.0-957.el7.x86_64 linux x64</span><br><span class="line">http_parser: 2.8.0</span><br><span class="line">node: 10.9.0</span><br><span class="line">v8: 6.8.275.24-node.14</span><br><span class="line">uv: 1.22.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.14.0</span><br><span class="line">modules: 64</span><br><span class="line">nghttp2: 1.32.0</span><br><span class="line">napi: 3</span><br><span class="line">openssl: 1.1.0i</span><br><span class="line">icu: 62.1</span><br><span class="line">unicode: 11.0</span><br><span class="line">cldr: 33.1</span><br><span class="line">tz: 2018e</span><br></pre></td></tr></table></figure></li></ol><h2 id="使用hexo搭建博客"><a href="#使用hexo搭建博客" class="headerlink" title="使用hexo搭建博客"></a>使用hexo搭建博客</h2><ol><li>创建博客目录<blockquote><p>如果安装过程中出现什么问题，可以删除这个目录，重新开始。</p></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday ~]# mkdir blog</span><br><span class="line">[root@Friday ~]# cd blog</span><br></pre></td></tr></table></figure></li><li>生成博客<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday blog]# hexo init</span><br></pre></td></tr></table></figure></li></ol><h2 id="博客配置与操作"><a href="#博客配置与操作" class="headerlink" title="博客配置与操作"></a>博客配置与操作</h2><blockquote><p>对于“博客功能插件配置”、“博客配置文件修改”、“博客主题配置文件修改”这几个主题会重新开帖。这里只做简单介绍。</p></blockquote><h3 id="hexo博客基本操作"><a href="#hexo博客基本操作" class="headerlink" title="hexo博客基本操作"></a>hexo博客基本操作</h3><blockquote><p><strong>hexo d：</strong>将静态博客文件部署到远端，需要在博客配置文件中进行配置；<br><strong>hexo n “文章名称”：</strong>创建以“文章名称”为名称的文章，不过不建议用中文，执行命令后在博客目录（上面创建的名为blog的目录：blog/source/_port）下生成名为“文章名称.md”的markdown文件；<br><strong>hexo n page “about”：</strong>创建about页面，需要在博客配置文件中进行配置；<br><strong>hexo博客使用方法：</strong></p><ul><li>使用<strong>hexo n “文章名称”</strong>命令生成以“文章名称”为名的文章；</li><li>使用markdown语法编辑在blog/source/_port/目录下的“文章名称.md”文件；</li><li>使用<strong>hexo clean</strong>命令清理上次生成的静态博客网页文件；</li><li>使用<strong>hexo g</strong>命令重新生成静态博客网页文件；</li><li>使用<strong>hexo s</strong>命令将生成的静态博客网页文件运行在本地机器的4000端口，以便预览自己写的文章或者预览对博客的主题等的修改</li><li>确定无误后，使用<strong>hexo d</strong>命令将静态博客网页文件部署到远端</li></ul></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday blog]# hexo clean&#x2F;&#x2F;清理上次生成的静态博客网页文件</span><br><span class="line">[root@Friday blog]# hexo g&#x2F;&#x2F;重新生成静态博客网页文件</span><br><span class="line">[root@Friday blog]# hexo s&#x2F;&#x2F;在本地4000端口运行静态博客</span><br><span class="line">[root@Friday blog]# hexo d&#x2F;&#x2F;将静态博客文件部署到远端</span><br><span class="line">[root@Friday blog]# hexo n &quot;文章名称&quot;&#x2F;&#x2F;创建一篇文章</span><br><span class="line">[root@Friday blog]# hexo n page “页面名称”&#x2F;&#x2F;创建新页面</span><br></pre></td></tr></table></figure><h3 id="hexo博客配置文件"><a href="#hexo博客配置文件" class="headerlink" title="hexo博客配置文件"></a>hexo博客配置文件</h3><blockquote><p>在博客目录下面的<strong>_config.yml</strong>文件中配置XXX等信息，详细方法重开一贴。</p></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday blog]# vim _config.yml</span><br></pre></td></tr></table></figure><h3 id="hexo博客主题配置文件"><a href="#hexo博客主题配置文件" class="headerlink" title="hexo博客主题配置文件"></a>hexo博客主题配置文件</h3><blockquote><p>在博客目录下的<strong>themes/landscape/_config.yml</strong>文件中配置XXX等信息，详细方法重开一帖。</p></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Friday blog]# vim themes&#x2F;landscape&#x2F;_config.yml</span><br></pre></td></tr></table></figure><h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><ul><li>问题描述：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO  Checking dependencies</span><br><span class="line">ERROR Package cheerio is not installed.</span><br><span class="line">ERROR Please install the missing dependencies from the root directory of your Hexo site.</span><br></pre></td></tr></table></figure></li><li>解决方法：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@friday blog]# cnpm install cheerio@0.22.0 --save</span><br></pre></td></tr></table></figure></li><li>问题解释<br>cheerio没有安装<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3></li><li>问题描述<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[fsevents@~2.1.2] optional install error: Package require os(darwin) not compatible with your platform(linux)</span><br></pre></td></tr></table></figure></li><li>解决方法<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@friday blog]# cnpm rebuild node-sass</span><br></pre></td></tr></table></figure></li><li>问题解释<br>fsevents这个包只能在mac ox系统用，在linux不兼容，这是一个可选错误，可以忽略。</li></ul><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo静态博客框架是一个非常易用易配置的博客框架，是搭建博客的不错的选择，本文详细介绍了Hexo博客的搭建步骤，并对博客的操作和配置做了简单的介绍，博客配置的详细内容以后会再开帖详述。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo静态博客搭建与配置" scheme="https://www.mychangee.com/categories/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="Hexo" scheme="https://www.mychangee.com/tags/Hexo/"/>
+    
+      <category term="搭建博客" scheme="https://www.mychangee.com/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="静态博客" scheme="https://www.mychangee.com/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VirtualBox中CentOS 7 NAT+Host only网络配置</title>
+    <link href="https://www.mychangee.com/2020/03/07/article_00010/"/>
+    <id>https://www.mychangee.com/2020/03/07/article_00010/</id>
+    <published>2020-03-07T03:43:28.000Z</published>
+    <updated>2020-03-07T16:35:20.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用VirtualBox虚拟机软件时，使用NAT网络连接外网+实现主机内部局域网，使用Host only网络实现虚拟机与本机互通；分别使用DHCP自动分配ip和静态ip两种，动态ip配置方便，但是会发生变化，静态iip配置麻烦，但是 ip不会发生变化；因为NAT网络用以连接外网，ip具体值不重要，而Host-only主要用于与主机互通，如果经常变化的话就会比较麻烦，所以推荐使用NAT(DHCP)+Host-only(static)的方式配置。</p><a id="more"></a><h1 id="VirtualBox中CentOS-7-NAT-Host-only网络配置"><a href="#VirtualBox中CentOS-7-NAT-Host-only网络配置" class="headerlink" title="VirtualBox中CentOS 7 NAT+Host only网络配置"></a>VirtualBox中CentOS 7 NAT+Host only网络配置</h1><blockquote><p>环境说明：</p><ul><li>VirtualBox：版本 6.0.14 r133895 (Qt5.6.2)</li><li>CentOS 7：内核版本：3.10.0-957.e17.x86_64</li></ul></blockquote><h2 id="NAT网络配置"><a href="#NAT网络配置" class="headerlink" title="NAT网络配置"></a>NAT网络配置</h2><h3 id="DHCP自动分配ip"><a href="#DHCP自动分配ip" class="headerlink" title="DHCP自动分配ip"></a>DHCP自动分配ip</h3><ol><li><p><strong>左侧</strong>选中目标虚拟机，点击<strong>右侧上方</strong>“设置”；</p></li><li><p>设置页面，<strong>左侧</strong>选中“网络”，<strong>右侧</strong>选中“网卡1”，<strong>勾选</strong>“启用连接”复选框，<strong>连接方式</strong>选择“NAT 网络”，<strong>界面名称</strong>选择“NatNetwork”，点击<strong>右下角</strong>OK，启动虚拟机，至此NAT网络（dhcp自动分配ip）已经可用；</p><p><img src="https://media.mychangee.com/img/20200307122007.jpg!nlb" alt></p></li><li><p>在网卡配置文件中将网卡配置为开机自启：</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root#friday ~]# ifconfig    &#x2F;&#x2F;确定网卡名称，其中lo是本地回环网卡，另外的一个就是NAT网卡名称，</span><br><span class="line">[root#friday ~]# vim &#x2F;etc&#x2F;sysconfig&#x2F;network-script&#x2F;ifcfg-enp0s3    &#x2F;&#x2F;打开网卡配置文件</span><br><span class="line">NOBOOT&#x3D;yes    &#x2F;&#x2F;修改此选项为yes</span><br></pre></td></tr></table></figure><p>修改完成后，使用“systemctl restart network”命令重启网卡，就可以使用了。</p></li></ol><h3 id="手动配置静态ip"><a href="#手动配置静态ip" class="headerlink" title="手动配置静态ip"></a>手动配置静态ip</h3><ol><li><p>添加新NAT网络：管理-&gt;全局设定；在全局设定页面，左侧选择“网络”，右侧选择最右侧竖排的“<img src="https://media.mychangee.com/img/20200307122008.jpg!nomark" alt>”符号，添加一个新的NAT网络，并且取消此网络的“网络选项：支持DHCP”复选框，并将网络名称修改为“NatNetwork-nodhcp”，点击右下方OK保存；</p><p><img src="https://media.mychangee.com/img/20200307122002.jpg!mplb" alt></p></li><li><p>为虚拟机添加上一步中自建的NAT网络：<strong>左侧</strong>选中目标虚拟机，点击<strong>右侧上方</strong>“设置”；设置页面中，<strong>左侧</strong>选中“网络”，<strong>右侧</strong>选中“网卡1”，<strong>勾选</strong>“启用连接”复选框，<strong>连接方式</strong>选择“NAT 网络”，<strong>界面名称</strong>选择“NatNetwork-nodhcp”，点击右下角OK保存设置，然后启动虚拟机；</p><p><img src="https://media.mychangee.com/img/20200307122003.jpg!nlb" alt></p></li><li><p>修改网卡配置文件，如下：</p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root#friday ~]# vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-enp0s3</span><br><span class="line">BOOTPROTO&#x3D;static   # 修改，以静态指定方式获取ip</span><br><span class="line">ONBOOT&#x3D;yes       # 修改，设置网卡开机自启</span><br><span class="line">IPADDR&#x3D;10.0.2.13           # 添加，网卡ip</span><br><span class="line">NETMASK&#x3D;255.255.255.0      # 添加，掩码</span><br><span class="line">DNS1&#x3D;114.114.114.114</span><br><span class="line">DNS2&#x3D;114.114.115.115   # 这两行都是dns解析服务器地址</span><br><span class="line">GATEWAY&#x3D;10.0.2.1   # 网关</span><br></pre></td></tr></table></figure><p> 修改完成后，使用”systemctl restart network”命令重启网卡，完成配置。</p></li></ol><h2 id="Host-only网络配置"><a href="#Host-only网络配置" class="headerlink" title="Host only网络配置"></a>Host only网络配置</h2><h3 id="DHCP自动分配ip-1"><a href="#DHCP自动分配ip-1" class="headerlink" title="DHCP自动分配ip"></a>DHCP自动分配ip</h3><ol><li><p>管理-&gt;主机网络管理器；</p></li><li><p>如果已有名为VirtualBox Host-Only Etherner Adapter的网络，则无需新建，否则点击左上角“创建”，创建一个新的仅主机网络；</p></li><li><p><strong>要勾选</strong>“VirtualBox Host-Only Etherner Adapter”网络后面的DHCP服务器复选框，<strong>下方左侧</strong>“网卡”选项选择“自动配置网卡”，<strong>下方右侧</strong>DHCP服务器选项中，勾选“启用服务器”复选框，点击<strong>右下角</strong>“应用”；</p><p><img src="https://media.mychangee.com/img/20200307122004.jpg!nlb" alt></p></li><li><p>下面配置虚拟机一端，<strong>左侧</strong>选中目标虚拟机，<strong>右侧</strong>点击上方“设置”选项，<strong>在设置面板中</strong>，<strong>左侧</strong>选择“网络”，<strong>右侧</strong>选择“网卡2”，选中“<strong>启用网络连接</strong>”复选框，“<strong>连接方式</strong>”选项选择“仅主机(Host-Only)网络”，“<strong>界面名称</strong>”选项选择“VirtualBox Host-Only Ethernet Adapter”，点击<strong>右下方</strong>OK，开启虚拟机；</p><p><img src="https://media.mychangee.com/img/20200307122005.jpg!nlb" alt></p></li><li><p>下面修改虚拟机中的网卡配置文件，主要修改以下几项，如果网卡配置文件没有人为修改，其他的选项不需要动；</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root#friday ~]# vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-enp0s8</span><br><span class="line">BOOTPROTO&#x3D;dhcp# 本项要修改为dhcp方式获取ip</span><br><span class="line">UUID&#x3D;bbab75d8-0b4b-4987-b675-24d4a3ba87aa# 此项每张网卡的都不一样，无需修改</span><br><span class="line">ONBOOT&#x3D;yes# 本项设置为网卡开机自启</span><br><span class="line">HWADDR&#x3D;08:00:27:B8:28:64    # mac地址，每张网卡都不一样，无需修改</span><br></pre></td></tr></table></figure><p>修改完成后，使用“systemctl restart network”命令重启网卡，就可以使用了。</p></li></ol><h3 id="手动配置静态ip-1"><a href="#手动配置静态ip-1" class="headerlink" title="手动配置静态ip"></a>手动配置静态ip</h3><ol><li><p>管理-&gt;主机网络管理器；</p></li><li><p>如果已有名为VirtualBox Host-Only Etherner Adapter #2的网络，则无需新建，否则点击左上角“创建”；</p></li><li><p>Host only采用静态分配ip，所以这里<strong>不要勾选</strong>网络信息最后面的“DHCP服务器”复选框；<strong>下方左侧</strong>“网卡”选项选择“手动配置网卡”在“IPv4地址”和“IPv4网络掩码”选项输入想要的ip与子网掩码，这里以192.168.93.1/255.255.255.0为例；<strong>下方右侧</strong>DHCP服务器选项中，取消“启用服务器”复选框，点击右下角应用；</p><p><img src="https://media.mychangee.com/img/20200307122009.jpg!nlb" alt></p></li><li><p>下面配置虚拟机一端，<strong>左侧</strong>选中目标虚拟机，<strong>右侧</strong>点击上方“设置”选项，在<strong>设置面板</strong>中，<strong>左侧</strong>选择“网络”，<strong>右侧</strong>选择“网卡2”，选中“<strong>启用网络连接</strong>”复选框，“<strong>连接方式</strong>”选项选择“仅主机(Host-Only)网络”，“<strong>界面名称</strong>”选项选择“VirtualBox Host-Only Ethernet Adapter #2”，点击<strong>右下方</strong>OK，开启虚拟机。</p><p><img src="https://media.mychangee.com/img/20200307122006.jpg!nlb" alt></p></li><li><p>下面修改虚拟机中的网卡配置文件，主要修改一下几项：</p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO&#x3D;static     #修改，指定网卡为静态ip</span><br><span class="line">ONBOOT&#x3D;yes   #修改</span><br><span class="line">IPADDR&#x3D;192.168.93.13    #添加，指定网卡的静态ip</span><br><span class="line">NETMASK&#x3D;255.255.255.0   #添加，指定上一项匹配的子网掩码</span><br></pre></td></tr></table></figure><p> 修改完成后，使用“systemctl restart network”命令重启网卡，就可以使用了。</p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用VirtualBox虚拟机软件时，使用NAT网络连接外网+实现主机内部局域网，使用Host only网络实现虚拟机与本机互通；分别使用DHCP自动分配ip和静态ip两种，动态ip配置方便，但是会发生变化，静态iip配置麻烦，但是 ip不会发生变化；因为NAT网络用以连接外网，ip具体值不重要，而Host-only主要用于与主机互通，如果经常变化的话就会比较麻烦，所以推荐使用NAT(DHCP)+Host-only(static)的方式配置。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="VirtualBox使用手册" scheme="https://www.mychangee.com/categories/VirtualBox%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"/>
+    
+    
+      <category term="CentOS7" scheme="https://www.mychangee.com/tags/CentOS7/"/>
+    
+      <category term="VirtualBox" scheme="https://www.mychangee.com/tags/VirtualBox/"/>
+    
+      <category term="NAT" scheme="https://www.mychangee.com/tags/NAT/"/>
+    
+      <category term="Host-Only" scheme="https://www.mychangee.com/tags/Host-Only/"/>
+    
+      <category term="VirtualBox网络配置" scheme="https://www.mychangee.com/tags/VirtualBox%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="CentOS7网络配置" scheme="https://www.mychangee.com/tags/CentOS7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 7修改默认启动界面</title>
+    <link href="https://www.mychangee.com/2020/03/04/article_00009/"/>
+    <id>https://www.mychangee.com/2020/03/04/article_00009/</id>
+    <published>2020-03-04T11:06:12.000Z</published>
+    <updated>2020-03-07T16:35:20.202Z</updated>
+    
+    <content type="html"><![CDATA[<p>指定系统自启动使用的界面（图形界面或者命令行界面）。</p><a id="more"></a><h1 id="CentOS-7修改默认启动界面"><a href="#CentOS-7修改默认启动界面" class="headerlink" title="CentOS 7修改默认启动界面"></a>CentOS 7修改默认启动界面</h1><blockquote><p>环境说明：</p><ul><li>内核版本：3.10.0-1062.9.1.el7.x86_64</li></ul></blockquote><h2 id="查看当前默认启动界面"><a href="#查看当前默认启动界面" class="headerlink" title="查看当前默认启动界面"></a>查看当前默认启动界面</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl get-default</span><br><span class="line">multi-user.target&#x2F;&#x2F;这个输出说明是命令行界面</span><br><span class="line">graphical.target         &#x2F;&#x2F;这个输出说明是图形界面</span><br></pre></td></tr></table></figure><h2 id="设置默认启动界面为图形界面"><a href="#设置默认启动界面为图形界面" class="headerlink" title="设置默认启动界面为图形界面"></a>设置默认启动界面为图形界面</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl set-default graphical.target</span><br></pre></td></tr></table></figure><h2 id="设置默认启动界面为命令行界面"><a href="#设置默认启动界面为命令行界面" class="headerlink" title="设置默认启动界面为命令行界面"></a>设置默认启动界面为命令行界面</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;指定系统自启动使用的界面（图形界面或者命令行界面）。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS 7配置与使用" scheme="https://www.mychangee.com/categories/CentOS-7%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="linux" scheme="https://www.mychangee.com/tags/linux/"/>
+    
+      <category term="默认启动界面" scheme="https://www.mychangee.com/tags/%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 7防火墙操作</title>
+    <link href="https://www.mychangee.com/2020/03/04/article_00008/"/>
+    <id>https://www.mychangee.com/2020/03/04/article_00008/</id>
+    <published>2020-03-04T11:06:05.000Z</published>
+    <updated>2020-03-07T16:35:20.201Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过对防火墙进行自定义，只允许需要的端口通过，关闭非必要端口，提高系统安全性。</p><a id="more"></a><h1 id="CentOS-7防火墙操作"><a href="#CentOS-7防火墙操作" class="headerlink" title="CentOS 7防火墙操作"></a>CentOS 7防火墙操作</h1><blockquote><p>环境说明：</p><ul><li>内核版本：3.10.0-1062.9.1.el7.x86_64</li></ul><p>CentOS7使用firewall防火墙</p></blockquote><h2 id="防火墙的开-关-重启-自启-关闭自启-查看状态"><a href="#防火墙的开-关-重启-自启-关闭自启-查看状态" class="headerlink" title="防火墙的开/关/重启/自启/关闭自启/查看状态"></a>防火墙的开/关/重启/自启/关闭自启/查看状态</h2><ul><li><p>打开防火墙</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl start firewalld</span><br></pre></td></tr></table></figure></li><li><p>关闭防火墙</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl stop firewalld</span><br></pre></td></tr></table></figure></li><li><p>重启防火墙</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl restart firewalld</span><br></pre></td></tr></table></figure></li><li><p>设置防火墙开机自启</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl enable firewalld</span><br></pre></td></tr></table></figure></li><li><p>关闭防火墙自启功能</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl disable firewalld</span><br></pre></td></tr></table></figure></li><li><p>查看防火墙状态</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# systemctl status firewalld</span><br></pre></td></tr></table></figure></li></ul><h2 id="防火墙查看已开放端口-开启端口-关闭端口"><a href="#防火墙查看已开放端口-开启端口-关闭端口" class="headerlink" title="防火墙查看已开放端口/开启端口/关闭端口"></a>防火墙查看已开放端口/开启端口/关闭端口</h2><ul><li><p>查看已开放端口</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# firewall-cmd --list-ports</span><br></pre></td></tr></table></figure></li><li><p>开启端口（以80端口为例）</p><blockquote><p>参数说明：</p><ul><li>–zone=public：作用域</li><li>–add-port：添加端口和协议</li><li>–remove-port：删除端口和协议</li><li>–permanent：永久生效</li></ul></blockquote><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure></li><li><p>关闭端口（以80端口为例）</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# firewall-cmd --zone&#x3D; public --remove-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure></li></ul><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过对防火墙进行自定义，只允许需要的端口通过，关闭非必要端口，提高系统安全性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS 7配置与使用" scheme="https://www.mychangee.com/categories/CentOS-7%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="linux" scheme="https://www.mychangee.com/tags/linux/"/>
+    
+      <category term="防火墙" scheme="https://www.mychangee.com/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+      <category term="firewall" scheme="https://www.mychangee.com/tags/firewall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7设置host name</title>
+    <link href="https://www.mychangee.com/2020/03/04/article_00007/"/>
+    <id>https://www.mychangee.com/2020/03/04/article_00007/</id>
+    <published>2020-03-04T11:05:44.000Z</published>
+    <updated>2020-03-07T16:35:20.184Z</updated>
+    
+    <content type="html"><![CDATA[<p>在必要时将CentOS 7的主机名设置为自己想要的名字。</p><a id="more"></a><h1 id="CentOS7设置host-name"><a href="#CentOS7设置host-name" class="headerlink" title="CentOS7设置host name"></a>CentOS7设置host name</h1><blockquote><p>环境说明：</p><ul><li>内核版本：3.10.0-1062.9.1.el7.x86_64</li></ul><p>本文先使用命令方式将主机名修改为“localhost”，再使用修改文件的方式将主机名修改为“jarvis”，以此演示主机名的修改。</p></blockquote><h2 id="查看hostname"><a href="#查看hostname" class="headerlink" title="查看hostname"></a>查看hostname</h2><ul><li><p>方法一：‘hostname’命令</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# hostname</span><br><span class="line">jarvis</span><br></pre></td></tr></table></figure></li><li><p>方法二：‘hostnamectl’命令</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# hostnamectl</span><br><span class="line">   Static hostname: jarvis</span><br><span class="line">   Pretty hostname: Jarvis</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: bb303a4a8b1846ce9ac8531e1b67db9b</span><br><span class="line">           Boot ID: 81745e108ae64db18eea055db0702bf6</span><br><span class="line">    Virtualization: kvm</span><br><span class="line">  Operating System: CentOS Linux 7 (Core)</span><br><span class="line">       CPE OS Name: cpe:&#x2F;o:centos:centos:7</span><br><span class="line">            Kernel: Linux 3.10.0-1062.9.1.el7.x86_64</span><br><span class="line">      Architecture: x86-64</span><br></pre></td></tr></table></figure></li></ul><h2 id="设置hostname"><a href="#设置hostname" class="headerlink" title="设置hostname"></a>设置hostname</h2><ul><li><p>使用命令设置</p><p>hostnamectl set-hostname “主机名”</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# hostnamectl set-hostname localhost</span><br><span class="line">[root@jarvis ~]# hostname</span><br><span class="line">localhost</span><br><span class="line">[root@jarvis ~]# hostnamectl</span><br><span class="line">   Static hostname: localhost</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: bb303a4a8b1846ce9ac8531e1b67db9b</span><br><span class="line">           Boot ID: 81745e108ae64db18eea055db0702bf6</span><br><span class="line">    Virtualization: kvm</span><br><span class="line">  Operating System: CentOS Linux 7 (Core)</span><br><span class="line">       CPE OS Name: cpe:&#x2F;o:centos:centos:7</span><br><span class="line">            Kernel: Linux 3.10.0-1062.9.1.el7.x86_64</span><br><span class="line">      Architecture: x86-64</span><br></pre></td></tr></table></figure></li><li><p>通过修改配置文件设置</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@jarvis ~]# vim &#x2F;etc&#x2F;hostname&#x2F;&#x2F;打开此文件，将其中内容修改为“jarvis”</span><br><span class="line">[root@jarvis ~]# reboot&#x2F;&#x2F;修改文件的方式一定要自启</span><br><span class="line">[root@jarvis ~]# hostname</span><br><span class="line">jarvis</span><br></pre></td></tr></table></figure></li></ul><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在必要时将CentOS 7的主机名设置为自己想要的名字。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS 7配置与使用" scheme="https://www.mychangee.com/categories/CentOS-7%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="linux" scheme="https://www.mychangee.com/tags/linux/"/>
+    
+      <category term="主机名设置" scheme="https://www.mychangee.com/tags/%E4%B8%BB%E6%9C%BA%E5%90%8D%E8%AE%BE%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDE添加文件头@author信息</title>
+    <link href="https://www.mychangee.com/2020/02/24/article_00006/"/>
+    <id>https://www.mychangee.com/2020/02/24/article_00006/</id>
+    <published>2020-02-24T07:11:25.000Z</published>
+    <updated>2020-03-07T16:35:20.174Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用阿里编码规约扫描插件扫描代码的时候，我们会发现这样的提示，这是因为没有在代码中添加包含代码文件创建者、创建日期的注释信息，这篇文章我们来看一下怎样在eclipse和idea中设置@author（作者）@date（日期）信息；</p><p><img src="https://media.mychangee.com/img/20200224142555.jpg!mpdb" alt></p><a id="more"></a><h1 id="IDE添加文件头-author信息"><a href="#IDE添加文件头-author信息" class="headerlink" title="IDE添加文件头@author信息"></a>IDE添加文件头@author信息</h1><blockquote><p>环境说明：</p><ul><li>eclipse版本：Photon Release (4.8.0)</li><li>idea版本：2018.03.06</li></ul><p>注意区分<a href="https://baike.baidu.com/item/IDE" target="_blank" rel="noopener">IDE</a>（Integrated Development Environment ，集成开发环境）和idea（IntelliJ IDEA，JAVA 开发软件，也就是java IDE，与eclipse同类）</p></blockquote><h2 id="eclipse中的设置"><a href="#eclipse中的设置" class="headerlink" title="eclipse中的设置"></a>eclipse中的设置</h2><ol><li><p>Window-&gt;Preferences，进入参数设置页面；</p></li><li><p>参数设置页面左侧Java-&gt;Code Style-&gt;Code Templates，右侧展开Comments，点击Types，点击右侧Eidt…将内容修改为一下内容，并勾选底部Automatically add comments for new methods and types复选框，点击右下角Apply；</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* *</span><br><span class="line"> * @author mychangee</span><br><span class="line"> * @date $&#123;currentDate:date(&#39;YYYY&#x2F;MM&#x2F;dd&#39;)&#125;</span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure><p><img src="https://media.mychangee.com/img/20200224142438.jpg!nlb" alt></p></li><li><p>在eclipse中新建java文件，可以发现新文件中已经有了@author和@date信息；</p><p><img src="https://media.mychangee.com/img/20200224142437.jpg!mplb" alt></p></li></ol><h2 id="idea中的设置"><a href="#idea中的设置" class="headerlink" title="idea中的设置"></a>idea中的设置</h2><ol><li><p>File-&gt;Settings…，进入设置页面；</p></li><li><p>设置页面左侧Editor-&gt;File and Code Temples，右侧依次选中Includes-&gt;File Header(如果没有点击”+”创建一个)，在右侧填写以下内容，记得将${USER}项换成你自己的名字或者昵称，否则会用电脑当前的登录名来作为@author的值，完成之后，点击右下角Apply；</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author : $&#123;USER&#125;</span><br><span class="line"> * @date : $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure></li></ol><p><img src="https://media.mychangee.com/img/20200224142556.jpg!ndb" alt></p><ol start="3"><li><p>在当前项目中新建一个java文件，此时可以发现，新建的java文件中已经包含了@author和@date信息；</p><p><img src="https://media.mychangee.com/img/20200224142557.jpg!mpdb" alt></p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用阿里编码规约扫描插件扫描代码的时候，我们会发现这样的提示，这是因为没有在代码中添加包含代码文件创建者、创建日期的注释信息，这篇文章我们来看一下怎样在eclipse和idea中设置@author（作者）@date（日期）信息；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://media.mychangee.com/img/20200224142555.jpg!mpdb&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+      <category term="eclipse" scheme="https://www.mychangee.com/tags/eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>idea添加自定义live template模板</title>
+    <link href="https://www.mychangee.com/2020/02/24/article_00005/"/>
+    <id>https://www.mychangee.com/2020/02/24/article_00005/</id>
+    <published>2020-02-24T07:11:15.000Z</published>
+    <updated>2020-03-07T16:35:20.172Z</updated>
+    
+    <content type="html"><![CDATA[<p>idea有一个非常方便编码的功能，就是Live Template，这个功能的本质就是构建一个常用代码段和一个缩写的映射，在编码时，使用这些缩写就可以快速的输入这些常用的代码块，了解了这些，将大大提高我们的编码效率；当然，除了默认的live template，我们还可以自定义自己的代码模板，在模板中，可以使用一些变量的引用，在带入代码模板的同时带入自定义一些类名、方法名等，提高编码效率。</p><a id="more"></a><h1 id="idea添加自定义live-template模板"><a href="#idea添加自定义live-template模板" class="headerlink" title="idea添加自定义live template模板"></a>idea添加自定义live template模板</h1><blockquote><p>环境说明：idea版本：2018.03.06<br>参考：<a href="https://www.jetbrains.com/help/idea/2018.3/edit-template-variables-dialog.html?utm_campaign=IU&utm_medium=link&utm_source=product&utm_content=2018.3" target="_blank" rel="noopener">IntelliJ IDEA 2018.3 Help-Edit Template Variables Dialog(编辑模板变量对话框)</a></p><p>idea知道有这个功能，不知道eclipse有没有</p></blockquote><ol><li><p>File-&gt;Settings…，进入设置页面；</p></li><li><p>设置页面左侧Editor-&gt;Live Templates，展开右侧的列表，就可以看见一些常用的、默认的代码模板了，如果在编码的过程中遇到常用的代码段，可以来看看有没有已经定义好的代码模板可用；</p><p><img src="https://media.mychangee.com/img/20200224142247.jpg!ndb" alt></p></li><li><p>现在我们以创建对方法描述的模板为例来自定义自己的代码模板；Live Templates面板右侧上方，依次点击”+”-&gt;Template Group，在弹出的框中填写自定义模板组的名称，这里写MyGroup，将我们自定义的代码模板放在MyGroup模板组里面，与其他默认模板区分开；</p><p><img src="https://media.mychangee.com/img/20200224142248.jpg!mpdb" alt></p></li><li><p>接着点击列表中出现的MyGroup模板组，再点击刚才的”+”-&gt;Live Template；</p></li><li><p>在下方Abbreviation选项中填入自定义的模板对应的缩写，我这里写成mi(method info的首字母缩写)，在Description选项中填入对此模板的描述，在Template text选项中填入模板原文，还有Live Temple面板左下方红色的No applicable context yet.选项，点击后面的Define选项，选择Java，最后记得点击右下角Apply按钮；</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;模板原文，复制时删掉此行</span><br><span class="line">&#x2F;**</span><br><span class="line">  * Method Name : $METHOD_NAME$</span><br><span class="line">  * Method Parameter : $METHOD_PARAMETER$</span><br><span class="line">  * Method Return Type : $METHOD_RETURN_TYPE$</span><br><span class="line">  * Method Description : $END$</span><br><span class="line">  *&#x2F;</span><br></pre></td></tr></table></figure><p><img src="https://media.mychangee.com/img/20200224153644.jpg!ndb" alt></p></li><li><p>在模板原文中可以使用变量，比如这里的模板原文中的  $METHOD_NAME$、$METHOD_PARAMETER$ 、 $END$ 、就是一个变量，在输入时，会置空或用与参数连接的内置或自定义函数来填充，比如若将 $METHOD_ NAME$ 与系统内置的methodName()函数连接起来，在输入的时候，在<strong>某方法内部</strong>，输入我们设置好的缩写mi，IDE会提示输入，点击之后，会发现在我们设置的方法模板内部，已经将方法名、参数、返回值自动填充好了；<strong>如何连接变量与函数表达式呢？</strong>先选中一个参数，然后看模板原文右侧上方，有一个Edit variables选项，点击之后，就可以进入绑定的面板，在idea中内置了许多表达式，可以在文首的“参考”信息中查看详细的表达式的解释；</p><p><img src="https://media.mychangee.com/img/20200224142250.jpg!ndb" alt></p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;idea有一个非常方便编码的功能，就是Live Template，这个功能的本质就是构建一个常用代码段和一个缩写的映射，在编码时，使用这些缩写就可以快速的输入这些常用的代码块，了解了这些，将大大提高我们的编码效率；当然，除了默认的live template，我们还可以自定义自己的代码模板，在模板中，可以使用一些变量的引用，在带入代码模板的同时带入自定义一些类名、方法名等，提高编码效率。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse、idea、notepad++设置编码为UTF-8，换行符为Unix</title>
+    <link href="https://www.mychangee.com/2020/02/23/article_00004/"/>
+    <id>https://www.mychangee.com/2020/02/23/article_00004/</id>
+    <published>2020-02-23T03:54:20.000Z</published>
+    <updated>2020-03-07T16:35:20.164Z</updated>
+    
+    <content type="html"><![CDATA[<p>根据阿里编码规约，将eclipse、idea、notepad++的编码设置为UTF-8，换行符设置为Unix，有利于编码；<br><img src="https://media.mychangee.com/img/20200223120028.jpg!nomark" alt></p><a id="more"></a><h1 id="eclipse、idea、notepad-设置编码为UTF-8，换行符为Unix"><a href="#eclipse、idea、notepad-设置编码为UTF-8，换行符为Unix" class="headerlink" title="eclipse、idea、notepad++设置编码为UTF-8，换行符为Unix"></a>eclipse、idea、notepad++设置编码为UTF-8，换行符为Unix</h1><blockquote><p>环境说明：</p><ul><li>eclipse版本：Photon Release (4.8.0)</li><li>idea版本：2018.03.06</li><li>notepad++版本：v7.8.4</li></ul></blockquote><h2 id="eclipse中的设置"><a href="#eclipse中的设置" class="headerlink" title="eclipse中的设置"></a>eclipse中的设置</h2><ol><li><p>Window -&gt; Preferences，进入参数设置页面；</p></li><li><p>Preferences页面左侧General-&gt;Workspaces，右侧Text file encoding选项设置为Other:UTF-8（文本文件编码），New text file line delimiter选项设置为Other:Unix（换行符格式），点击右下角Apply；</p><p><img src="https://media.mychangee.com/img/20200223113803.jpg!nlb" alt></p></li><li><p>Preferences页面左侧General-&gt;Content Types，右侧选中Text，将底部的Default encoding选项设置为UTF-8，并点击Update；</p><p><img src="https://media.mychangee.com/img/20200223113804.jpg!nlb" alt></p></li><li><p>还是3中的路径，展开Text（就是3中设置的Text）项，选中Java Properties File选项，将底部的ISO-8859-1更换为UTF-8，并点击右侧Update；</p><p><img src="https://media.mychangee.com/img/20200223113805.jpg!nlb" alt></p></li><li><p>Preferences页面左侧Web-&gt;JSP Files，右侧Encoding项设置为ISO 10646/Unicode(UTF-8)，点击右下角Apply；</p><p><img src="https://media.mychangee.com/img/20200223113806.jpg!nlb" alt></p></li></ol><h2 id="idea中的设置"><a href="#idea中的设置" class="headerlink" title="idea中的设置"></a>idea中的设置</h2><ol><li><p>File -&gt; Setting…，进入设置页面；</p></li><li><p>左侧Editor-&gt;File Encodings，右侧上部Global Encoding选项和Project Encoding选项设置为UTF-8，下部Default encoding for properties files选项设置为UTF-8，并勾选后面Transparent native-to-ascii conversion复选框，Create UTF-8 files选项设置为with NO BOM，点击右下角Apply，UTF-8编码设置完成；</p><p><img src="https://media.mychangee.com/img/20200223113942.jpg!ndb" alt></p></li><li><p>设置页面左侧Editor-&gt;Code Style，右侧Line separator选项设置为Unix and OS X(\n)，点击右下角Apply，Unix格式换行符设置完成；</p><p><img src="https://media.mychangee.com/img/20200223113943.jpg!ndb" alt></p></li></ol><h2 id="notepad-中的设置"><a href="#notepad-中的设置" class="headerlink" title="notepad++中的设置"></a>notepad++中的设置</h2><ol><li><p>设置-&gt;首选项；</p></li><li><p>左侧“新建”，右侧“格式（行尾）”选项设置为“Unix(LF)”，“编码”选项设置为“UTF-8(无BOM)”，并勾选“适用于打开ANSI文件”；</p><p><img src="https://media.mychangee.com/img/20200223114044.jpg!nlb" alt></p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;根据阿里编码规约，将eclipse、idea、notepad++的编码设置为UTF-8，换行符设置为Unix，有利于编码；&lt;br&gt;&lt;img src=&quot;https://media.mychangee.com/img/20200223120028.jpg!nomark&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+      <category term="eclipse" scheme="https://www.mychangee.com/tags/eclipse/"/>
+    
+      <category term="Notepad++" scheme="https://www.mychangee.com/tags/Notepad/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse、idea、notepad++将tab键输入设置为四个空格</title>
+    <link href="https://www.mychangee.com/2020/02/21/article_00003/"/>
+    <id>https://www.mychangee.com/2020/02/21/article_00003/</id>
+    <published>2020-02-21T09:47:57.000Z</published>
+    <updated>2020-03-07T16:35:20.126Z</updated>
+    
+    <content type="html"><![CDATA[<p>在阿里编码规约中，要求将tab键修改为4个空格，结合了tab键和空格缩进的优点，对编码大有裨益。</p><p><img src="https://media.mychangee.com/img/20200221175600.png!nomark" alt></p><a id="more"></a><h1 id="eclipse、idea、notepad-将tab键输入设置为四个空格"><a href="#eclipse、idea、notepad-将tab键输入设置为四个空格" class="headerlink" title="eclipse、idea、notepad++将tab键输入设置为四个空格"></a>eclipse、idea、notepad++将tab键输入设置为四个空格</h1><blockquote><p>环境说明：</p><ul><li>eclipse版本：Photon Release (4.8.0)</li><li>idea版本：2018.03.06</li><li>notepad++版本：v7.8.4</li></ul><p>本文是“阿里编码规约系列”，此处的设置是为了实现阿里编码规约的要求，除此方法之外，还可以通过<a href="https://mychangee.com/2020/02/19/article_00002/" target="_blank" rel="noopener"><strong>导入阿里编码规约格式化文件</strong></a>实现，导入之后，还需要确认eclipse中的Insert spaces for tabs<strong>被选中</strong>，确认idea中的Use tab character<strong>未被选中</strong>，这两个内容在本篇文章中均有包含；另外notepad++不可以导入阿里编码规约格式化文件；</p></blockquote><h2 id="eclipse中的设置"><a href="#eclipse中的设置" class="headerlink" title="eclipse中的设置"></a>eclipse中的设置</h2><ol><li><p>Window-&gt; Preferences，进入参数设置页面；</p></li><li><p>Preferences页面左侧General-&gt;Editors-&gt;Text Editors，右侧将Displayed tab with修改为4，勾选Insert spaces for tabs；</p><p><img src="https://media.mychangee.com/img/20200221172611.jpg!nlb" alt></p></li><li><p>Preferences页面左侧Java-&gt;Code Style-&gt;Formatter，右侧Edit…，在弹出的页面中选择Indentation，将展开信息中的第一项Tab policy修改为Spaces only；至此，eclipse中的tab-&gt;四个空格设置完成；</p><p><img src="https://media.mychangee.com/img/20200221172612.jpg!nlb" alt></p></li><li><p>验证：点击菜单栏“<img src="https://media.mychangee.com/img/20200221172613.jpg!nomark" alt>”，然后在java文件中按下tab键，查看tab的位置是否是四个点，如果是，说明设置成功；</p><p><img src="https://media.mychangee.com/img/20200221172614.jpg!mplb" alt></p></li></ol><h2 id="idea中的设置"><a href="#idea中的设置" class="headerlink" title="idea中的设置"></a>idea中的设置</h2><ol><li><p>File -&gt; Settings…，打开设置页面；</p></li><li><p>设置页面左侧Editor-&gt;Code Style-&gt;Java（这里只设置java，其他语言如果用到需自行设置），右侧Use tab character复选框<strong>千万不要选！！！</strong>，将Tab size、Indent、Continuation indent三项的值都改为4，点击右下角Apply即可；</p><p><img src="https://media.mychangee.com/img/20200221172953.jpg!ndb" alt></p></li><li><p>验证：新建一个java文件，按下tab键，看是否能被分别选中为四个空格，而不是一个整体，如果可以，说明修改成功；</p><p><img src="https://media.mychangee.com/img/20200221172954.jpg!mpdb" alt></p></li></ol><h2 id="notepad-中的设置"><a href="#notepad-中的设置" class="headerlink" title="notepad++中的设置"></a>notepad++中的设置</h2><ol><li><p>设置-&gt;首选项；</p></li><li><p>首选项面板中，左侧选择“语言”，右下侧勾选“替换为空格”复选框，关闭即可；</p><p><img src="https://media.mychangee.com/img/20200221173109.jpg!nlb" alt></p></li><li><p>验证：勾选菜单栏“<img src="https://media.mychangee.com/img/20200221173108.jpg!nomark" alt>”按钮，使用tab键输入，如果是四个点，则是空格，如果是一个指向右边的箭头，则是tab；</p><p><img src="https://media.mychangee.com/img/20200221173107.jpg!mplb" alt></p></li></ol><hr><p>   日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在阿里编码规约中，要求将tab键修改为4个空格，结合了tab键和空格缩进的优点，对编码大有裨益。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://media.mychangee.com/img/20200221175600.png!nomark&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+      <category term="eclipse" scheme="https://www.mychangee.com/tags/eclipse/"/>
+    
+      <category term="Notepad++" scheme="https://www.mychangee.com/tags/Notepad/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>向IDE导入阿里编码规约格式化模板和注释模板</title>
+    <link href="https://www.mychangee.com/2020/02/19/article_00002/"/>
+    <id>https://www.mychangee.com/2020/02/19/article_00002/</id>
+    <published>2020-02-19T12:02:26.000Z</published>
+    <updated>2020-03-07T16:35:20.121Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用阿里编码规约格式化模板，可以使用快捷键以阿里编码规约为依据，快速格式化代码；</p><a id="more"></a><h1 id="向IDE导入阿里编码规约格式化模板和注释模板"><a href="#向IDE导入阿里编码规约格式化模板和注释模板" class="headerlink" title="向IDE导入阿里编码规约格式化模板和注释模板"></a>向IDE导入阿里编码规约格式化模板和注释模板</h1><blockquote><p>环境说明：</p><ul><li>eclipse版本：Photon Release (4.8.0)</li><li>idea版本：2018.03.06</li></ul><p>文件地址：</p><ul><li><a href="https://github.com/alibaba/p3c/tree/master/p3c-formatter" target="_blank" rel="noopener">阿里编码规约格式化模板和注释模板点这里</a></li><li><a href="https://github.com/krasa/EclipseCodeFormatter/releases" target="_blank" rel="noopener">EclipseCodeFormatter插件点这里</a>（本地安装用，本文用在线安装方式安装，用不到，但是留在这里，给需要的朋友）</li></ul><p>需注意：eclipse可以导入格式化模板和注释模板，但是idea据我所了解到的，只能导入代码格式化模板；</p><p>注意区分<a href="https://baike.baidu.com/item/IDE" target="_blank" rel="noopener">IDE</a>（Integrated Development Environment ，集成开发环境）和idea（IntelliJ IDEA，JAVA 开发软件，也就是java IDE，与eclipse同类）。</p></blockquote><h2 id="向eclipse导入"><a href="#向eclipse导入" class="headerlink" title="向eclipse导入"></a>向eclipse导入</h2><h3 id="导入格式化模板"><a href="#导入格式化模板" class="headerlink" title="导入格式化模板"></a>导入格式化模板</h3><ol><li><p>点击Window-&gt;preferences，进入preferences面板；</p></li><li><p>在preferences面板左侧点击Java-&gt;Code Style-&gt;formatter，在右侧出现的面板中点击import，导入“eclipse-codestyle.xml”（需在文章开头文件地址第一个超链处下载）；；</p><p><img src="https://media.mychangee.com/img/20200219194125.jpg!nlb" alt></p></li><li><p>导入之后，在preferences面板右侧Formatter面板中左上角Active profile下方的下拉栏中选择P3C-CodeStyle，并点击Formatter面板右下角Apply，至此导入格式化模板完成，以后就可以在Eclipse中使用Ctrl+Shift+f组合键以阿里编码规约为依据，快速格式化代码了；</p><p><img src="https://media.mychangee.com/img/20200219194126.jpg!nlb" alt></p></li></ol><h3 id="导入注释模板"><a href="#导入注释模板" class="headerlink" title="导入注释模板"></a>导入注释模板</h3><h4 id="导入注释模板-1"><a href="#导入注释模板-1" class="headerlink" title="导入注释模板"></a>导入注释模板</h4><ol><li><p>点击Window-&gt;preferences，进入preferences面板；</p></li><li><p>在preferences面板左侧点击Java-&gt;Code Style-&gt;Code Templates，在右侧出现的面板中点击import，导入“eclipse-codetemplate.xml”，导入之后，勾选Code Templates面板左下角Automatically add comments for new methods and types，选择右下角Apply；</p><p><img src="https://media.mychangee.com/img/20200219194127.jpg!nlb" alt></p></li></ol><h4 id="修改-author信息"><a href="#修改-author信息" class="headerlink" title="修改@author信息"></a>修改@author信息</h4><blockquote><p>导入注释模板之后，需要修改项目中创建文件之后自动生成的@author信息，因为模板本身是取电脑登录帐号的名字，但是我们可能并不想用电脑的登录名来做为@author选项的内容；</p></blockquote><p>首先，点开Code Templates面板左侧Comments，点击Types，选择右侧Edit，修改其中的内容点击右下角OK即可；</p><p><img src="https://media.mychangee.com/img/20200219194128.jpg!nlb" alt></p><h2 id="向idea导入"><a href="#向idea导入" class="headerlink" title="向idea导入"></a>向idea导入</h2><h3 id="导入格式化模板-1"><a href="#导入格式化模板-1" class="headerlink" title="导入格式化模板"></a>导入格式化模板</h3><blockquote><p>没有idea专用的代码格式化文件，所以只能导入eclipse的代码格式化文件，这就需要用到EclipseCodeFormatter插件；</p></blockquote><h4 id="安装EclipseCodeFormatter插件（在线安装方式）"><a href="#安装EclipseCodeFormatter插件（在线安装方式）" class="headerlink" title="安装EclipseCodeFormatter插件（在线安装方式）"></a>安装EclipseCodeFormatter插件（在线安装方式）</h4><ol><li><p>File-&gt;Settings…进入idea的设置页面；</p></li><li><p>点击左侧Plugins-&gt;右侧上方Marketplace，搜索框输入EclipseCodeFormatter，安装搜索结果，安装之后，重启idea；</p><p><img src="https://media.mychangee.com/img/20200219194507.jpg!ndb" alt></p></li></ol><h4 id="导入代码格式化模板文件"><a href="#导入代码格式化模板文件" class="headerlink" title="导入代码格式化模板文件"></a>导入代码格式化模板文件</h4><ol><li><p>File-&gt;Settings…进入idea的设置页面；</p></li><li><p>点击左侧Other Settings-&gt;Eclipse Code Formatter-&gt;右侧面板左上方Use the Eclipse Code Formatter，点击Eclipse Java Formatter config file选项右侧Browse按钮，导入eclipse-codestyle.xml文件，在下方Profile选项中选择P3C-CodeStyle，勾选下方Optimize Imports(Intellij’s Import Optimizing must be turned ON)，并选择Settings面板右下角OK，至此，向idea导入代码格式化模板文件完成；</p><p><img src="https://media.mychangee.com/img/20200219194508.jpg!ndb" alt></p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用阿里编码规约格式化模板，可以使用快捷键以阿里编码规约为依据，快速格式化代码；&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+      <category term="eclipse" scheme="https://www.mychangee.com/tags/eclipse/"/>
+    
+      <category term="代码格式化" scheme="https://www.mychangee.com/tags/%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96/"/>
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/tags/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDE安装阿里编码规约检查插件</title>
+    <link href="https://www.mychangee.com/2020/02/18/article_00001/"/>
+    <id>https://www.mychangee.com/2020/02/18/article_00001/</id>
+    <published>2020-02-18T15:47:01.000Z</published>
+    <updated>2020-03-07T16:35:20.119Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用阿里编码规约插件，可以自动检测出代码不符合阿里编码规约的代码，进而修正，使用阿里编码规约，可以使代码更规范，避免出现很多低级问题。</p><a id="more"></a><h1 id="IDE安装阿里编码规约检查插件"><a href="#IDE安装阿里编码规约检查插件" class="headerlink" title="IDE安装阿里编码规约检查插件"></a>IDE安装阿里编码规约检查插件</h1><blockquote><p>环境说明：</p><ul><li>eclipse版本：Photon Release (4.8.0)</li><li>idea版本：2018.03.06</li></ul><p>参考信息：</p><ul><li><a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">https://github.com/alibaba/p3c</a></li></ul><p>注意区分<a href="https://baike.baidu.com/item/IDE" target="_blank" rel="noopener">IDE</a>（Integrated Development Environment ，集成开发环境）和idea（IntelliJ IDEA，JAVA 开发软件，也就是java IDE，与eclipse同类）</p></blockquote><h2 id="eclipse中的设置"><a href="#eclipse中的设置" class="headerlink" title="eclipse中的设置"></a>eclipse中的设置</h2><ol><li><p>Help -&gt; Install New Software；</p><p><img src="https://media.mychangee.com/img/20200218232707.jpg!nlb" alt></p></li><li><p>在左上Work with一栏输入 <a href="https://p3c.alibaba.com/plugin/eclipse/update" target="_blank" rel="noopener">https://p3c.alibaba.com/plugin/eclipse/update</a> ，并按下回车；勾选中间加载出的选项，点击右下Next；下方进度条会开始跑；</p><p><img src="https://media.mychangee.com/img/20200218232708.jpg!nlb" alt></p><p><img src="https://media.mychangee.com/img/20200218232710.jpg!nlb" alt></p></li><li><p>进度条走完后，点击Next；</p><p><img src="https://media.mychangee.com/img/20200218232709.jpg!nlb" alt></p></li><li><p>勾选I accept the terms of the license agreement，点击右下Finish；</p><p><img src="https://media.mychangee.com/img/20200218232711.jpg!nlb" alt></p></li><li><p>在跳出来的安全警告中点击Install anyway；</p><p><img src="https://media.mychangee.com/img/20200218232712.jpg!nlb" alt></p></li><li><p>等待eclipse主面板右下方进度条走完；</p><p><img src="https://media.mychangee.com/img/20200218232713.jpg!nlb" alt></p></li><li><p>在跳出来的框中选择Restart Now，重启完成后，插件安装成功；</p><p><img src="https://media.mychangee.com/img/20200218232714.jpg!nlb" alt></p></li><li><p>查看eclipse工具栏，已经有了阿里编码规约扫描按钮，使用时，先点击需要扫描的类或包或项目，然后点击此按钮，扫描结果会在eclipse主面板下方显示，点击扫描按钮旁边的按钮可以修改提示信息的语言（中/英）；</p><p><img src="https://media.mychangee.com/img/20200218232715.jpg!mplb" alt></p></li></ol><h2 id="idea中的设置"><a href="#idea中的设置" class="headerlink" title="idea中的设置"></a>idea中的设置</h2><h3 id="在idea的Marketplace安装"><a href="#在idea的Marketplace安装" class="headerlink" title="在idea的Marketplace安装"></a>在idea的Marketplace安装</h3><ol><li><p>通过File-&gt;Settings…或者点击工具栏右侧的扳手按钮打开设置；</p><p><img src="https://media.mychangee.com/img/20200218233128.jpg!ndb" alt></p></li><li><p>选择左侧Plugins，在右侧上部选择Marketplace，在搜索栏中输入 Alibaba Java Coding Guidelines，安装搜索结果中的插件；</p><p><img src="https://media.mychangee.com/img/20200218233129.jpg!ndb" alt></p></li><li><p>安装完成后，重启idea，在工具栏中已经可以看到阿里编码规约扫描按钮；</p><p><img src="https://media.mychangee.com/img/20200218233130.jpg!mpdb" alt></p></li></ol><h3 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h3><ol><li><p>在 <a href="https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/versions" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/versions</a> 下载最新版本的插件；</p></li><li><p>同Marketplace安装一样，打开设置，选择Plugins，与Marketplace安装不同的是，这次不选Marketplace，而是选择与Marketplace同行右侧的齿轮按钮，在跳出的菜单中选择Install Plugin from Disk；</p><p><img src="https://media.mychangee.com/img/20200218233131.jpg!mpdb" alt></p></li><li><p>在跳出的面板中，找到下载的插件并点击OK；</p><p><img src="https://media.mychangee.com/img/20200218233132.jpg!ndb" alt></p></li><li><p>安装完成后，选择插件信息右侧Restart IDE，重启之后，已经可以在工具栏看到阿里编码规约扫描按钮了；</p></li></ol><hr><p>日拱一卒，功不唐捐！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用阿里编码规约插件，可以自动检测出代码不符合阿里编码规约的代码，进而修正，使用阿里编码规约，可以使代码更规范，避免出现很多低级问题。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="阿里编码规约" scheme="https://www.mychangee.com/categories/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E7%BA%A6/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.mychangee.com/tags/IDEA/"/>
+    
+      <category term="Plugins" scheme="https://www.mychangee.com/tags/Plugins/"/>
+    
+      <category term="eclipse" scheme="https://www.mychangee.com/tags/eclipse/"/>
+    
+  </entry>
+  
+</feed>
