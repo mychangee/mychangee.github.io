@@ -1,19 +1,19 @@
 /* ---------------------------------
  *          User Defined
  * --------------------------------- */
-a:link {
+a.RecordInformation:link {
   color: #4d4d4d;
 }
 /* 未访问链接*/
-a:visited {
+a.RecordInformation:visited {
   color: #4d4d4d;
 }
 /* 已访问链接 */
-a:hover {
+a.RecordInformation:hover {
   color: #609dff;
 }
 /* 鼠标移动到链接上 */
-a:active {
+a.RecordInformation:active {
   color: #609dff;
 }
 /* 鼠标点击时 */
